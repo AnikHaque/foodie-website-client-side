@@ -1,0 +1,17 @@
+.Detailsimage1{
+    height: 100%;
+    width:100%;
+    box-shadow:20px 20px 30px gray;
+    border-radius:10px;
+}
+.Details-title{
+    font-size: 30px;
+}
+.Details-button{
+    padding: 10px;
+    padding-left: 55px;
+    padding-right: 55px;
+    border-radius: 5%;
+    margin-bottom: 50px;
+    /* margin-left: 10px; */
+}

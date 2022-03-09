@@ -1,0 +1,11 @@
+.add-menu form{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+    }
+    .add-menu input {
+        width: 40%;
+        margin-bottom: 10px;
+    }
