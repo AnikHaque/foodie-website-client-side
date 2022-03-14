@@ -1,0 +1,8 @@
+.bg-my-order{
+    border: 3px solid black;
+    border-radius: 7px;
+}
+ol li{
+    list-style-type: none;
+    margin-top: 10px;
+}

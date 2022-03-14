@@ -6,6 +6,7 @@ import { useForm, useWatch } from "react-hook-form";
 
 import './MenuDetails.css'
 import useAuth from '../../hooks/useAuth';
+import Footer from '../footer/Footer';
 
 const headingService={
    textAlign:'center',
@@ -17,7 +18,7 @@ const MenuDetails = () => {
    const { register, handleSubmit, reset } = useForm();
    const onSubmit = data =>{
        console.log(data);
-       axios.post("http://localhost:5000/food",data)
+       axios.post("https://radiant-reaches-24140.herokuapp.com/food",data)
        .then(res=>{
            if(res.data.insertedId){
                alert("Added Successfully");
@@ -29,7 +30,7 @@ const MenuDetails = () => {
      const {id} = useParams();
     const [food,setFood] = useState({})
      useEffect(()=>{
-         fetch(`http://localhost:5000/menu/${id}`)
+         fetch(`https://radiant-reaches-24140.herokuapp.com/menu/${id}`)
        .then(res=>res.json())
         .then(data=>setFood(data))
 
@@ -38,9 +39,26 @@ const MenuDetails = () => {
         <div className='mt-5'>
 <Container>
   <Row>
-    <Col className='bg-dark mb-5 shadow' sm={12} md={12} lg={6}><img src={food.img} className='img-fluid  mb-5 pt-5 rounded'></img></Col>
+    <Col className='shadow' sm={12} md={12} lg={6}><img src={food.img} className='img-fluid  p-5 rounded'></img></Col>
     <Col sm={12} md={12} lg={6}>
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-dark text-center pt-4 pb-4 px-4 pe-4 mb-5">
+    <div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 bg-light pt-5 pb-5">
+    <h1 className='fw-bold text-dark mx-5'>  {food.name}</h1>
+        <br></br>
+        <p className='text-dark mx-5'><b>Price:</b> {food.price}</p>
+        <p className='text-dark mx-5'>{food.description}</p>      
+    </div>
+  </div>
+</div>
+
+     
+        
+    </Col>
+  </Row>
+</Container>
+
+<form onSubmit={handleSubmit(onSubmit)} className="bg-dark text-center w-75 mx-auto pt-5 pb-5 px-5 pe-5 mb-5">
      <input {...register("email", { required: true, maxLength: 120 })} placeholder="email" className='w-100 p-2' defaultValue={user.email} />
 <br></br>
 <br></br>
@@ -61,29 +79,8 @@ const MenuDetails = () => {
      <br></br>
 <br></br>
      <input type="submit" className='w-50' />
-   </form>   
-        
-    </Col>
-  </Row>
-</Container>
-
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 bg-dark pt-5 pb-5">
-         <h1 className='text-white text-center fw-bold'>Menu Details:</h1>
-         <br></br>
-    <h4 className='fw-bold text-white text-center'> Menu Name:</h4>
-    <h5 className='fw-bold text-white text-center'>  {food.name}</h5>
-        <br></br>
-        <h4 className='fw-bold text-white text-center'>Menu description:</h4>
-        <h5 className='fw-bold text-white text-center'>{food.description}</h5>
-        <br></br>
-        <h4 className='fw-bold text-white text-center'>Menu price:</h4>
-        <h5 className='fw-bold text-white text-center'>{food.price}</h5>
-         
-    </div>
-  </div>
-</div>
+   </form> 
+   
  </div>
     );
 

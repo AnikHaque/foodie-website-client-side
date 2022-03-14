@@ -8,7 +8,7 @@ import './Menu.css';
 const Menu = () => {
     const [food, setFood] = useState([])
     useEffect(()=>{
-fetch('http://localhost:5000/menu')
+fetch('https://radiant-reaches-24140.herokuapp.com/menu')
 .then(res => res.json())
 .then(data => setFood(data))
     },[])

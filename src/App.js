@@ -18,7 +18,9 @@ import Menu from './components/menu/Menu';
 import Gallary from './components/gallary/Gallary';
 import Contact from './components/contact/Contact';
 import AddMenu from './components/addmenu/AddMenu';
-
+import Footer from './components/footer/Footer';
+import Reservation from './components/reservation/Reservation';
+import MyReservation from './components/myreservation/MyReservation';
 function App() {
   return (
     <div className="App">
@@ -45,7 +47,7 @@ function App() {
 <Gallary></Gallary>
        </Route>
        <Route exact path="/contact">
-<Contact></Contact>>
+<Contact></Contact>
        </Route>
        
        <Route exact path="/register">
@@ -60,6 +62,12 @@ function App() {
        <Route exact path="/myorders">
 <MyOrders></MyOrders>
        </Route>
+       <Route exact path="/reservation">
+<Reservation></Reservation>
+       </Route>
+       <Route exact path="/myreservation">
+<MyReservation></MyReservation>
+       </Route>
        <PrivateRoute exact path ="/details">
 <Details></Details>
        </PrivateRoute>
@@ -67,6 +75,7 @@ function App() {
           <MenuDetails></MenuDetails>
         </PrivateRoute>
      </Switch>
+     <Footer></Footer>
      </BrowserRouter>
       </AuthProvider>
      

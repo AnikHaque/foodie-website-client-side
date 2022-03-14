@@ -1,0 +1,21 @@
+form{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    align-items: center;
+   
+    }
+    form input {
+        width: 90%;
+        margin-bottom: 10px;
+        border: 2px solid rgb(168, 177, 205);
+        border-radius: 5px;
+       
+        
+
+    }
+    .image-reserve{
+        margin-top: 85px;
+        border-radius: 7px;
+    }

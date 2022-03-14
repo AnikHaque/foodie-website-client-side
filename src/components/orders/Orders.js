@@ -5,7 +5,7 @@ const Orders = () => {
     const [foods, setFoods] = useState([])
     const {user} = useAuth();
     useEffect(() => {
-        fetch('http://localhost:5000/food')
+        fetch('https://radiant-reaches-24140.herokuapp.com/food')
             .then(res => res.json())
             .then(data => setFoods(data));
     }, [])
@@ -18,14 +18,21 @@ const Orders = () => {
             {foods.map((pd, index) => (
 
 <div class="col">
-<div class="card h-100 bg-dark text-white menu-details pt-3 pb-5">
+<div class="card h-100 bg-my-order text-white menu-details pt-3 pb-5">
       
       <div class="card-body">
           <img src={pd.image} className='img-fluid w-100'></img>
-        <h4 class="card-title text-center mt-5 text-light"><b className='text-warning'>Ordered by:</b>{pd.name}</h4>
+        {/* <h4 class="card-title text-center mt-5 text-light"><b className='text-warning'>Ordered by:</b>{pd.name}</h4>
         <h4 class="card-title text-center  text-light"><b className='text-warning'>Ordered Food:</b>{pd.foodname}</h4>
         <h5 className="text-center"><b className='text-warning'>Food Price:</b> {pd.price} Taka</h5>
-        <h5 className="text-center"><b className='text-warning'>Delivery Address:</b> {pd.address} </h5>
+        <h5 className="text-center"><b className='text-warning'>Delivery Address:</b> {pd.address} </h5> */}
+        <ol className='mt-4'>
+          <li className='text-dark'><b>Ordered By:</b> {user.displayName}</li>
+          <li className='text-dark'><b>Ordered Food:</b> {pd.foodname}</li>
+          <li className='text-dark'><b>Food Price:</b> {pd.price}</li>
+          <li className='text-dark'><b>Delivery Address</b> {pd.address}</li>
+          
+        </ol>
       </div>
       
        

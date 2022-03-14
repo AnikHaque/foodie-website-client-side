@@ -6,7 +6,7 @@ const AddMenu = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/menu',data)
+        axios.post('https://radiant-reaches-24140.herokuapp.com/menu',data)
         .then(res=>{
            if(res.data.insertedId){
                alert('Added Successfully');

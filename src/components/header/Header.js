@@ -20,13 +20,13 @@ const Header = () => {
   <Navbar.Brand href="#home"><b className='fw-bold fs-3'>FOODIE</b></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="me-auto">
-      <Nav.Link as={Link} to="/home" className='mx-2'>Home</Nav.Link>
-      <Nav.Link as={Link} to="/details" className='mx-2'>About</Nav.Link>
-      <Nav.Link as={Link} to="/menu" className='mx-2'>Menu</Nav.Link>
-      <Nav.Link as={Link} to="/reservation" className='mx-2'>Reservation</Nav.Link>
-      <Nav.Link as={Link} to="/gallary" className='mx-2'>Gallary</Nav.Link>
-      <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+    <Nav className="me-auto mx-5">
+      <Nav.Link as={Link} to="/home" className='mx-2 fw-bold'>Home</Nav.Link>
+      <Nav.Link as={Link} to="/details" className='mx-2 fw-bold'>About</Nav.Link>
+      <Nav.Link as={Link} to="/menu" className='mx-2 fw-bold'>Menu</Nav.Link>
+      <Nav.Link as={Link} to="/reservation" className='mx-2 fw-bold'>Reservation</Nav.Link>
+      <Nav.Link as={Link} to="/gallary" className='mx-2 fw-bold'>Gallary</Nav.Link>
+      <Nav.Link as={Link} to="/contact" className='fw-bold'>Contact</Nav.Link>
       
       
     </Nav>
@@ -34,7 +34,7 @@ const Header = () => {
     
     {
       admin && 
-      <NavDropdown title="Admin Dashboard" id="basic-nav-dropdown" className='mt-2'>
+      <NavDropdown title="Admin Dashboard" id="basic-nav-dropdown" className='mt-2 fw-bold'>
     <Nav.Link as={Link} to="/" className='text-light mx-2 me-2 fw-bold text-center bg-dark'>{user.displayName}</Nav.Link>
     <Nav.Link as={Link} to="/addmenu" className='text-dark fw-bold text-center'>Add Menu</Nav.Link>
     <Nav.Link as={Link} to="/orders" className='text-dark fw-bold text-center'>Manage Orders</Nav.Link>
@@ -44,9 +44,10 @@ const Header = () => {
 
     {
       !admin && user.email &&
-      <NavDropdown title="User Dashboard" id="basic-nav-dropdown" className='mt-2'>
+      <NavDropdown title="User Dashboard" id="basic-nav-dropdown" className='mt-2 fw-bold'>
     <Nav.Link as={Link} to="/" className='text-light mx-2 me-2 fw-bold text-center bg-dark'>{user.displayName}</Nav.Link>
     <Nav.Link as={Link} to="/myorders" className='text-dark fw-bold text-center'>My Orders</Nav.Link>
+    <Nav.Link as={Link} to="/myreservation" className='text-dark fw-bold text-center'>My Reservation</Nav.Link>
         </NavDropdown>
         }
     
@@ -54,11 +55,11 @@ const Header = () => {
      { 
 !user.email ?
      <Nav.Link as={Link} to="/login">
-          <Button className='btn btn-light text-dark'>Login</Button>
+          <Button className='btn btn-light text-dark fw-bold'>Login</Button>
           </Nav.Link>
           :
           <Nav.Link as={Link} to="/login">
-          <Button onClick={logout} className='btn btn-light text-dark'>LogOut</Button>
+          <Button onClick={logout} className='btn btn-light text-dark fw-bold'>LogOut</Button>
           </Nav.Link>
 
           }
