@@ -21,6 +21,7 @@ import AddMenu from './components/addmenu/AddMenu';
 import Footer from './components/footer/Footer';
 import Reservation from './components/reservation/Reservation';
 import MyReservation from './components/myreservation/MyReservation';
+import Login from './components/login/Login';
 function App() {
   return (
     <div className="App">
@@ -34,9 +35,9 @@ function App() {
        <Route exact path="/home">
 <Home></Home>
        </Route>
-       <Route exact path="/login">
+       {/* <Route exact path="/login">
 <About></About>
-       </Route>
+       </Route> */}
        <Route exact path="/menu">
 <Menu></Menu>
        </Route>
@@ -58,6 +59,9 @@ function App() {
        </Route>
        <Route exact path="/orders">
 <Orders></Orders>
+       </Route>
+       <Route exact path="/login">
+<Login></Login>
        </Route>
        <Route exact path="/myorders">
 <MyOrders></MyOrders>

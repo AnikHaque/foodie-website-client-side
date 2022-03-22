@@ -1,17 +1,56 @@
 import { useEffect, useState } from "react"
 import initializAuthentication from "../components/login/firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 initializAuthentication();
 
 const useFirebase = () => {
     const [error,setError]=useState({})
     const [user,setUser] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    const [authError, setAuthError] = useState('');
     const [admin,setAdmin] = useState(false);
 const auth = getAuth();
 
 const googleProvider = new GoogleAuthProvider();
 
+
+// login implement 
+const registerUser = (email, password, name, history) => {
+    setIsLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            setAuthError('');
+            const newUser = { email, displayName: name };
+            setUser(newUser);
+            // send name to firebase after creation
+            updateProfile(auth.currentUser, {
+                displayName: name
+            }).then(() => {
+            }).catch((error) => {
+            });
+            history.replace('/');
+        })
+        .catch((error) => {
+            setAuthError(error.message);
+            console.log(error);
+        })
+        .finally(() => setIsLoading(false));
+}
+
+const loginUser = (email, password, location, history) => {
+    setIsLoading(true);
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const destination = location?.state?.from || '/';
+            history.replace(destination);
+            setAuthError('');
+        })
+        .catch((error) => {
+            setAuthError(error.message);
+        })
+        .finally(() => setIsLoading(false));
+}
 
 // google sign in implement
 const signInUsingGoogle = () => {
@@ -82,6 +121,10 @@ fetch('https://radiant-reaches-24140.herokuapp.com/users',{
 
 return {
     user,
+    isLoading,
+    authError,
+    registerUser,
+    loginUser,
     admin,
     error,
     signInUsingGoogle,
